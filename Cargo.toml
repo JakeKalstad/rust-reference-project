@@ -1,0 +1,22 @@
+[package]
+name = "rust_reference"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+taos = { version = "*", default-features = false, features = ["native"] }
+r2d2 = "*"
+tokio-cron-scheduler = "*"
+lazy_static = "*"
+chrono = "*"
+handlebars = "*"
+log4rs = "*"
+env_logger = "*"
+log = "*"
+tungstenite = "0.17.3"
+serde_json = "1.0.87"
+url = "2.3.1"
+tokio = {version = "1.21.2", features = ["rt", "rt-multi-thread", "macros"]}
+warp = {version="*", features = ["tls"]}
+futures = "*"
+serde = { version="1.0.147", features = ["derive"] }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            window.onload = () => {
+                const BACKEND_URL = "wss://" + window.location.hostname + ":9001/ws"
+                const socket = new WebSocket(BACKEND_URL)
+                socket.onopen = () =>  { 
+                    setInterval(_ => socket.send(JSON.stringify({
+                        "ttype": "Ledger",
+                        "uuid": "cad85170-f309-4b26-bfe6-c5cbadd06d6e",
+                        "ticker": "AAPL",
+                        "price": Math.floor((Math.random() * 1000) + 1),
+                        "qty": Math.floor((Math.random() * 100) + 1),
+                        "ts": new Date().toISOString()
+                    })), 1)
+                }
+                socket.onmessage = (msg) => console.dir(msg.data)
+                socket.onerror = (err) => console.error(err)
+                socket.onclose = () => console.log("Socket Closed")
+            }
+        </script>
+    </body>
+</html>
